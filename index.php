@@ -5,13 +5,14 @@
 <p>
 </p>
 <?php
-$file = fopen("ids.txt", "r");
+define("FILENAME", "ids.txt");
+$file = 0;
 
-if($file === false)
+if(!file_exists(FILENAME))
 {
     fclose(fopen(FILENAME, "w"));
-    $file = $fopen(FILENAME, "r");
 }
+$file = fopen(FILENAME, "r");
 
 if(isset($_GET["key"])) {
     $id = $_GET["key"];
