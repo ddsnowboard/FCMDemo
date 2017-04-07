@@ -8,10 +8,10 @@
 define("FILENAME", "ids.txt");
 $file = 0;
 
-if(!file_exists(FILENAME))
-{
+if(!file_exists(FILENAME)) {
     fclose(fopen(FILENAME, "w"));
 }
+
 $file = fopen(FILENAME, "r");
 
 if(isset($_GET["key"])) {
