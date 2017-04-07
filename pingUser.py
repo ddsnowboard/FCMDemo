@@ -11,7 +11,7 @@ with open("authKey.txt", "r") as f:
 
 # data = dumps({"to": argv[1]})
 
-data = dumps({"to": argv[1], "notification": {"title": "Οι Ιουδαει"}})
+data = dumps({"to": argv[1], "notification": {"title": argv[2]}})
 
 
 headers = {"Authorization": "key=" + key, "Content-Type": "application/json"}

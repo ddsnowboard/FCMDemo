@@ -2,8 +2,12 @@
 <head>
 </head>
 <body>
-<p>
+<p>Click on something to bug that person's phone. 
+<br><br>
 </p>
+<form action="/index.php" method="post">
+<input type="text" name="message">
+<select name="key">
 <?php
 define("FILENAME", "ids.txt");
 $file = 0;
@@ -14,19 +18,29 @@ if(!file_exists(FILENAME)) {
 
 $file = fopen(FILENAME, "r");
 
-if(isset($_GET["key"])) {
-    $id = $_GET["key"];
-    echo exec("python3 pingUser.py " . $id);
+if(isset($_POST["key"])) {
+    $id = trim($_POST["key"]);
+    $message = trim($_POST["message"]);
+    $s = "python3 pingUser.py \"" . $id . "\" \"" . $message . "\"";
+    echo $s;
+    echo exec($s);
     echo "<br>";
 }
 
-echo "Click on something to bug that person's phone. <br><br>";
 while(!feof($file)) {
     $s = fgets($file);
-    echo "<a href=\"index.php?key=". $s ."\" class=\"id\">";
-    echo $s;
-    echo "</p>";
+    if(strcmp("", $s) != 0) {
+        echo "<option value=\"";
+        echo $s;
+        echo "\">";
+        echo $s;
+        echo "</option>";
+    }
 }
 ?>
+</select>
+<br>
+<input type="submit">
+</form>
 </body>
 </html>
