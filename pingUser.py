@@ -9,8 +9,6 @@ if len(argv) == 0:
 with open("authKey.txt", "r") as f:
     key = list(f)[0].strip()
 
-# data = dumps({"to": argv[1]})
-
 data = dumps({"to": argv[1], "notification": {"title": argv[2]}})
 
 
